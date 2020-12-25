@@ -1,0 +1,21 @@
+version: "3.9"
+services: 
+  mongo:
+    image: "mongo"
+    restart: "always"
+    environment: 
+      MONGO_INITDB_DATABASE: "root_db"
+      MONGO_INITDB_USERNAME: "root"
+      MONGO_INITDB_USERNAME: "somepassword"
+    volumes: 
+      - ./mongo_data:/data/db
+    ports:
+      - "27017-27019:27017-27019"
+  app:
+    image: "vueexpresstodos:latest"
+    restart: "always"
+    ports: 
+      - 3001:3001
+    environment: 
+      PORT: "3001"
+    
